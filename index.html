@@ -1585,7 +1585,9 @@
  yearFullscreenMonths.appendChild(buildMiniMonth(year, m, true)); 
  } 
  } 
- function openEventModalForDate(date) { 
+ function openEventModalForDate(date) {
+  eventModalBackdrop.style.pointerEvents = 'auto';
+ 
  editingEventId = null; 
  window.currentEditingEventDocId = null; 
  const dateKey = formatDateKey(date); 
@@ -1597,9 +1599,12 @@
  eventCalendarSelect.value = ''; 
  eventModalTitle.textContent = 'Create Event'; 
  deleteEventBtn.style.display = 'none'; 
- eventModalBackdrop.style.display = 'flex'; 
+ eventModalBackdrop.style.pointerEvents = 'auto';
+      eventModalBackdrop.style.display = 'flex'; 
  } 
- function openEventModalForEdit(event) { 
+ function openEventModalForEdit(event) {
+  eventModalBackdrop.style.pointerEvents = 'auto';
+ 
  editingEventId = events.indexOf(event); 
  window.currentEditingEventDocId = event?.id || null; 
  const matchingEvents = events.filter(e => e.id === event.id); 
@@ -1614,11 +1619,13 @@
  eventNotesInput.value = event.notes || ''; 
  eventModalTitle.textContent = 'Edit Event'; 
  deleteEventBtn.style.display = 'block'; 
- eventModalBackdrop.style.display = 'flex'; 
+ eventModalBackdrop.style.pointerEvents = 'auto';
+      eventModalBackdrop.style.display = 'flex'; 
  } 
  function openEventModal() { 
  eventModalBackdrop.style.pointerEvents = 'auto'; 
- eventModalBackdrop.style.display = 'flex'; 
+ eventModalBackdrop.style.pointerEvents = 'auto';
+      eventModalBackdrop.style.display = 'flex'; 
  eventTitleInput.disabled = false; 
  eventTitleInput.value = ''; 
  openEventModalForDate(today); 
